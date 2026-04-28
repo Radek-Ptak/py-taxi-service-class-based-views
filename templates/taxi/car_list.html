@@ -2,11 +2,26 @@
 
 {% block content %}
   <h1>Car list</h1>
-    <ul>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Model</th>
+        <th>Manufacturer</th>
+      </tr>
+    </thead>
+    <tbody>
       {% for car in car_list %}
-        <li><a href="{% url 'taxi:car-detail' car.id %}">{{ car.model }}</a></li>
+        <tr>
+          <td><a href="{% url 'taxi:car-detail' car.id %}">{{ car.id }}</a></td>
+          <td>{{ car.model }}</td>
+          <td>{{ car.manufacturer.name }}</td>
+        </tr>
       {% empty %}
-        <p>No car found.</p>
+        <tr>
+          <td colspan="3">No cars found.</td>
+        </tr>
       {% endfor %}
-    </ul>
+    </tbody>
+  </table>
 {% endblock %}

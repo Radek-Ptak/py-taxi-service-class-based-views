@@ -10,7 +10,7 @@
   <h3>Cars: </h3>
     <div class="ml-3">
       {% for car in driver.cars.all %}
-        <p><strong>Model: </strong>{{ car.model }}</p>
+        <p><strong>Model:</strong> <a href="{% url 'taxi:car-detail' car.id %}">{{ car.model }}</a></p>
         <p><strong>Manufacturer: </strong>{{ car.manufacturer.name }}</p>
       {% empty %}
         <p>No car found.</p>
